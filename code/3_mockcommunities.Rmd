@@ -31,7 +31,21 @@ mock_metadata <- read.csv("/home/kimberly.ledger/nearshore_eDNA/data/nearshore_m
   group_by(Community_ID) %>%
   mutate(start_conc_ng = uL * conc_ng_uL_measured,
          community_total_conc = sum(start_conc_ng),
-         Perc_Community = start_conc_ng/community_total_conc)
+         Perc_Community = start_conc_ng/community_total_conc) %>%
+  mutate(Common_name = ifelse(Common_name == "Chum Salmon", "Chum salmon", Common_name))
+
+## make supplementary table 
+mock_table_supp <- mock_metadata %>%
+  select(Community_ID, species, Common_name,Perc_Community) %>%
+  mutate(Perc_Community = round(Perc_Community*100,1)) %>%
+  pivot_wider(names_from = Community_ID, values_from = Perc_Community, values_fill = 0.0) %>%
+  arrange(species)
+
+write.csv(mock_table_supp, "/home/kimberly.ledger/nearshore_eDNA/outputs/TableS2.csv")
+
+rowSums(mock_table_supp[,3:15] > 0, na.rm = TRUE)
+colSums(mock_table_supp[,3:15], na.rm = TRUE)
+colSums(mock_table_supp[,3:15] > 0, na.rm = TRUE)
 
 #rename some taxa so that the mock community expected match the taxonomic assignments
 mock_metadata <- mock_metadata %>%

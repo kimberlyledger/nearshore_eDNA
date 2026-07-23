@@ -343,3 +343,268 @@ ggsave(p_clr, filename = "/home/kimberly.ledger/nearshore_eDNA/outputs/figures/c
 ```
 
 
+
+### add out of non-clr transformed alphas
+```{r}
+colnames(p_space_in1) <- in1$Species
+colnames(p_space_in2) <- in2$Species
+colnames(p_space_in3) <- in3$Species
+colnames(p_space_in4) <- in4$Species
+colnames(p_space_in5) <- in5$Species
+colnames(p_space_in6) <- in6$Species
+colnames(p_space_in7) <- in7$Species
+colnames(p_space_in8) <- in8$Species
+colnames(p_space_in9) <- in9$Species
+colnames(p_space_in10) <- in10$Species
+colnames(p_space_in11) <- in11$Species
+colnames(p_space_in12) <- in12$Species
+colnames(p_space_in13) <- in13$Species
+
+
+p_space_sum_1 <- p_space_in1 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in1),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM1")  
+
+p_space_sum_2 <- p_space_in2 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in2),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM2")
+
+p_space_sum_3 <- p_space_in3 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in3),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM3")
+
+p_space_sum_4 <- p_space_in4 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in4),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM4")
+
+p_space_sum_5 <- p_space_in5 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in5),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM5")
+
+p_space_sum_6 <- p_space_in6 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in6),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM6")
+
+p_space_sum_7 <- p_space_in7 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in7),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM7")
+
+p_space_sum_8 <- p_space_in8 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in8),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM8")
+
+p_space_sum_9 <- p_space_in9 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in9),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM9")
+
+p_space_sum_10 <- p_space_in10 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in10),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM10")
+
+p_space_sum_11 <- p_space_in11 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in11),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM11")
+
+p_space_sum_12 <- p_space_in12 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in12),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM12")
+
+p_space_sum_13 <- p_space_in13 %>% 
+                    pivot_longer( .,
+                          cols = colnames(p_space_in13),
+                          names_to="species",values_to="val") %>%
+                    group_by(species) %>%
+                    summarize(Mean = mean(val),
+                        SD=sd(val),
+                        q.025 = quantile(val,probs=0.025),
+                        q.05 = quantile(val,probs=0.05),
+                        q.25 = quantile(val,probs=0.25),
+                        q.75 = quantile(val,probs=0.75),
+                        q.95 = quantile(val,probs=0.95),
+                        q.975 = quantile(val,probs=0.975)) %>% 
+  mutate(calibration = "COM13")
+
+
+p_space_all <- p_space_sum_1 %>%
+  bind_rows(p_space_sum_2) %>%
+  bind_rows(p_space_sum_3) %>%
+  bind_rows(p_space_sum_4) %>%
+  bind_rows(p_space_sum_5) %>%
+  bind_rows(p_space_sum_6) %>%
+  bind_rows(p_space_sum_7) %>%
+  bind_rows(p_space_sum_8) %>%
+  bind_rows(p_space_sum_9) %>%
+  bind_rows(p_space_sum_10) %>%
+  bind_rows(p_space_sum_11) %>%
+  bind_rows(p_space_sum_12) %>%
+  bind_rows(p_space_sum_13) #%>%
+  #arrange(Mean)
+
+
+# get rid of reference species denotion
+p_space_all <- p_space_all %>%
+                      mutate(SP= ifelse(grepl("zRefSpecies_",species),
+                                       substr(species,13,nchar(species)),
+                                       as.character(species)))
+
+# Reorder categories numerically
+p_space_all$calibration <- factor(p_space_all$calibration, levels = c("COM1", "COM2",  "COM3", "COM4", "COM5",  "COM6",  "COM7",  "COM8",  "COM9", "COM10", "COM11", "COM12", "COM13"))
+
+#levels(p_space_all$calibration) <- c("COM1", "COM2",  "COM3", "COM4", "COM5",  "COM6",  "COM7",  "COM8",  "COM9", "COM10", "COM11", "COM12", "COM13") 
+p_space_all <- p_space_all %>%
+  mutate(SP = ifelse(SP == "Limanda aspera", "Pleuronectidae 1", SP))
+
+p_raw <-  ggplot(p_space_all) +
+    geom_vline(xintercept=0,linetype="dashed") +
+    geom_errorbarh(aes(xmin=q.25,xmax=q.75,y=SP),linewidth=2,height=0) +
+    #geom_errorbarh(aes(xmin=q.025,xmax=q.975,y=SP),size=0.8,height=0) +
+    geom_errorbarh(aes(xmin=q.05,xmax=q.95,y=SP),linewidth=0.8,height=0) +
+    #geom_point(aes(x=Mean,y=SP,fill=SP),size=3,shape=21) +
+    geom_point(aes(x=Mean,y=SP,fill=calibration),size=3,shape=21) +
+    #scale_fill_manual(values=p_space_sum$manual.col %>% as.character()) +
+    scale_x_continuous("Amplification Efficiency (raw)") +
+    scale_y_discrete(NULL) +
+    theme_bw() +
+    theme(legend.position = "right",
+          axis.text.y = element_text(size=10)) +
+  labs(fill = "mock community")
+
+p_raw
+```
+
+```{r}
+write.csv(p_space_all, "/home/kimberly.ledger/nearshore_eDNA/outputs/qm_ind_mocks/alpha_all_mocks.csv")
+```
+
