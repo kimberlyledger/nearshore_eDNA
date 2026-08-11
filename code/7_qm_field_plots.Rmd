@@ -94,6 +94,34 @@ mock1.post <-expand.grid(comm_idx = COM$comm_idx,sp_idx =SP$sp_idx) %>%
 mock1.all <- full_join(mock1.raw,mock1.post)
 ```
 
+### aside to look closer at simple means ###
+```{r}
+t1 <- mock1$env %>% 
+  mutate(propReads = ifelse(is.na(propReads), 0, propReads)) %>%
+  group_by(community, Species) %>% 
+  summarize(simple.Mean=mean(propReads),
+            simple.N = length(tech_rep))
+
+t1 %>% group_by(community) %>% summarize(total = sum(simple.Mean, na.rm = T)) 
+
+mock1$env %>% 
+  group_by(community) %>% 
+  summarize(total = sum(propReads, na.rm = T))      ## don't sum to 1...
+
+
+mock1.all %>% group_by(community) %>% 
+  summarize(total = sum(mock1.mean, na.rm = T))     ## sums to 1 
+
+raw.all %>% group_by(community) %>% 
+  summarize(total = sum(raw.mean, na.rm = T))      ## sums to 1 
+
+raw.raw %>% group_by(community) %>% 
+  summarize(total = sum(simple.Mean, na.rm = T))
+```
+
+
+
+
 ```{r}
 # Combine mock results with raw reads.
 result.dat <- left_join(mock1.all,raw.all)

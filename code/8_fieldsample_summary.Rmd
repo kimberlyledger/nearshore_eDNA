@@ -99,6 +99,8 @@ bottle_prop <- taxon_proportions %>%
   summarize(simple.N = n(),
             simple.mean = mean(prop),
             simple.SD = sd(prop))
+
+bottle_prop %>% group_by(bottle) %>% summarize(total = sum(simple.mean))
 ```
 
 join back some metadata
